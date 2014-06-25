@@ -101,6 +101,7 @@
                            '<div class="ngrs-handle ngrs-handle-min"><i></i></div>',
                            '<div class="ngrs-handle ngrs-handle-max"><i></i></div>',
                            '<div class="ngrs-join"></div>',
+                           '<div class="ngrs-join-background"></div>',
                          '</div>',
                          '<div class="ngrs-value-runner">',
                            '<div class="ngrs-value ngrs-value-min" ng-show="showValues"><div>{{filteredModelMin}}</div></div>',
