@@ -114,6 +114,7 @@
                 max: '=',
                 modelMin: '=?',
                 modelMax: '=?',
+                control: '=?',
                 onHandleDown: '&', // calls optional function when handle is grabbed
                 onHandleUp: '&', // calls optional function when handle is released 
                 orientation: '@', // options: horizontal | vertical | vertical left | vertical right
@@ -582,9 +583,16 @@
                         return false;
                     })
                     // stop propagation
-                    .bind('click', function (event) {
-                        event.stopPropagation();
+                     .bind('click', function (event) {
+                        var proposal = ((event.offsetX * 100) / $slider.width());
+                        scope.modelMax = parseFloat((proposal * range) / 100).toFixed(scope.decimalPlaces);
+                        if (scope.control) scope.control.clickOnSlider();
+                        scope.$apply();
                     });
+
+                handles[1].bind('click', function (event) {
+                    event.stopPropagation();
+                });
 
                 // bind events to each handle
                 handleMove(0);
